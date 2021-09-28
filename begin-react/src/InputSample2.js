@@ -1,4 +1,4 @@
-// input 상태관리 
+// 여러개의 input 상태관리 
 import React, { useState } from 'react'; 
 
 function InputSample(){

@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react'; 
-import UserList from './UserList';
+// import UserList from './UserList';
 import CreateUser from './CreateUser';
+import UserList3 from './UserList3';
+
 //import InputSample2 from './InputSample2';
 // import InputSample3 from './InputSample3';
 // import Hello from './Hello';
@@ -20,21 +22,25 @@ function App() {
       [name]: value
     });
   };
+  
   const [users, setUsers] = useState([
     {
       id: 1,
       username: 'velopert',
-      email: 'public.velopert@gmail.com'
+      email: 'public.velopert@gmail.com',
+      active : true
     },
     {
       id: 2,
       username: 'tester',
-      email: 'tester@example.com'
+      email: 'tester@example.com',
+      active : false
     },
     {
       id: 3,
       username: 'liz',
-      email: 'liz@example.com'
+      email: 'liz@example.com',
+      active : false
     }
   ]);
 
@@ -53,6 +59,10 @@ function App() {
     });
     nextId.current += 1;
   };
+  
+  const onRemove = id =>{
+    setUsers(users.filter(user => user.id !== id));
+  }
   return (
     <>
       <CreateUser
@@ -61,7 +71,7 @@ function App() {
         onChange={onChange}
         onCreate={onCreate}
       />
-      <UserList users={users} />
+      <UserList3 users={users} onRemove={onRemove}/>
     </>
   );
 }

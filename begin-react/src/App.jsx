@@ -1,7 +1,7 @@
-import React, { useRef, useState } from 'react'; 
+import React, { useRef, useState } from 'react';
 // import UserList from './UserList';
 import CreateUser from './CreateUser';
-import UserList3 from './UserList3';
+import UserList3 from './components/userlist/UserList3';
 
 //import InputSample2 from './InputSample2';
 // import InputSample3 from './InputSample3';
@@ -12,36 +12,36 @@ import UserList3 from './UserList3';
 function App() {
   const [inputs, setInputs] = useState({
     username: '',
-    email: ''
+    email: '',
   });
   const { username, email } = inputs;
-  const onChange = e => {
+  const onChange = (e) => {
     const { name, value } = e.target;
     setInputs({
       ...inputs,
-      [name]: value
+      [name]: value,
     });
   };
-  
+
   const [users, setUsers] = useState([
     {
       id: 1,
       username: 'velopert',
       email: 'public.velopert@gmail.com',
-      active : true
+      active: true,
     },
     {
       id: 2,
       username: 'tester',
       email: 'tester@example.com',
-      active : false
+      active: false,
     },
     {
       id: 3,
       username: 'liz',
       email: 'liz@example.com',
-      active : false
-    }
+      active: false,
+    },
   ]);
 
   const nextId = useRef(4);
@@ -49,20 +49,20 @@ function App() {
     const user = {
       id: nextId.current,
       username,
-      email
+      email,
     };
     setUsers([...users, user]);
 
     setInputs({
       username: '',
-      email: ''
+      email: '',
     });
     nextId.current += 1;
   };
-  
-  const onRemove = id =>{
-    setUsers(users.filter(user => user.id !== id));
-  }
+
+  const onRemove = (id) => {
+    setUsers(users.filter((user) => user.id !== id));
+  };
   return (
     <>
       <CreateUser
@@ -71,7 +71,7 @@ function App() {
         onChange={onChange}
         onCreate={onCreate}
       />
-      <UserList3 users={users} onRemove={onRemove}/>
+      <UserList3 users={users} onRemove={onRemove} />
     </>
   );
 }

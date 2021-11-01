@@ -1,18 +1,18 @@
-// input 상태관리 
-import React, { useState } from 'react'; 
+// 8. input 상태관리
+import React, { useState } from 'react';
 
-function InputSample(){
-  const [text , setText] = useState(''); 
+function InputSample() {
+  const [text, setText] = useState('');
 
-  const onChange = (e) =>{
+  const onChange = (e) => {
     setText(e.target.value);
   };
 
-  const onReset = () =>{
+  const onReset = () => {
     setText('');
   };
 
-  return(
+  return (
     <div>
       <input onChange={onChange} value={text} />
       <button onClick={onReset}>초기화</button>
@@ -23,4 +23,4 @@ function InputSample(){
   );
 }
 
-export default InputSample; 
+export default InputSample;

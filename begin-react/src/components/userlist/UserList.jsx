@@ -1,6 +1,8 @@
+// 11. 배열 렌더링하기
 import React from 'react';
 
 function User({ user }) {
+  console.log(user);
   return (
     <div>
       <b>{user.username}</b> <span>({user.email})</span>
@@ -8,10 +10,28 @@ function User({ user }) {
   );
 }
 
-function UserList({ users }) {
+function UserList() {
+  const users = [
+    {
+      id: 1,
+      username: 'velopert',
+      email: 'public.velopert@gmail.com',
+    },
+    {
+      id: 2,
+      username: 'tester',
+      email: 'tester@example.com',
+    },
+    {
+      id: 3,
+      username: 'liz',
+      email: 'liz@example.com',
+    },
+  ];
+
   return (
     <div>
-      {users.map(user => (
+      {users.map((user) => (
         <User user={user} key={user.id} />
       ))}
     </div>
